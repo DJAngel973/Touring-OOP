@@ -21,7 +21,7 @@ public class Levels {
     public void createQuestion(){
         if (this.rangeMaximum <= 0){
             // Throw an exception to handle invalid range input
-            throw new IllegalArgumentException(String.format("El rango máximo deber ser mayor que cero. Valor actual: %d", this.rangeMaximum));
+            throw new IllegalArgumentException(String.format("El rango máximo deber ser mayor que cero. Valor actual: %d\n", this.rangeMaximum));
         }else{
             // Random to generate random numbers
             Random randomNumber = new Random();
@@ -96,7 +96,7 @@ public class Levels {
         }
     }
     // Getters
-    public String getOperation(){return String.format( "%d %s %d = ?", this.firstNumber, this.operation, this.secondNumber);}
+    public String getOperation(){return String.format( "%d %s %d = ?\n", this.firstNumber, this.operation, this.secondNumber);}
     public int[] getOptionAnswer(){return this.optionAnswer;}
     public int getAnswer(){return this.answer;}
     public int getPointsMaximum(){return this.pointsMaximum;}
