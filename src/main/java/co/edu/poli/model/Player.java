@@ -15,7 +15,7 @@ public class Player {
         this.lives = 3;
     }
 
-    //Getters y setters
+    //Getters and setters
     public String getName(){return this.name;}
     public void setName(String name){this.name = name;}
 
@@ -27,7 +27,7 @@ public class Player {
 
     //Methods to update game status
     public void addPoints(int points){this.points += points;}
-    public void subtractLives(int lives){--this.lives;}
+    public void subtractLives(){--this.lives;}
 
     //Method for sum lives 'increase lives if possible'(Incrementar vidas si es posible.)
     public void increaseLivesPossible(){
