@@ -19,6 +19,7 @@ public class TouringRun {
             System.out.printf("Hola %s, comencemos el juego.\n", player.getName());
 
             //
+            label:
             while(player.getLives() > 0){
                 currentLevel.createQuestion();
                 System.out.printf("Pregunta: %s\n", currentLevel.getOperation());
@@ -85,23 +86,28 @@ public class TouringRun {
                     questionByLevel = 0;
                     correctQuestion = 0;
                     player.increaseLivesPossible();
-                    if(currentLevel instanceof Level1){
-                        currentLevel = new Level2();
-                        System.out.println("Bienvenido al Nivel 2.");
-                    }else if(currentLevel instanceof Level2){
-                        currentLevel = new Level3();
-                        System.out.println("Bienvenido al Nivel 3.");
-                    }else if(currentLevel instanceof Level3){
-                        currentLevel =  new Level4();
-                        System.out.println("Bienvenido al Nivel 4.");
-                    }else if(currentLevel instanceof Level4){
-                        currentLevel = new Level5();
-                        System.out.println("Bienvenido al Nivel 5.");
-                    }else {
-                        System.out.printf("¡¡¡FELICITACIONES ♣♣♣ %s ♣♣♣ HAS COMPLETADO TODOS LOS NIVELES.!!!\n", player.getName());
-                        System.out.printf("TOTAL PUNTOS: ♠♠♠ %d ♠♠♠\n", player.getPoints());
-                        BestPlayer.showBestPlayer();
-                        break;
+                    switch (currentLevel) {
+                        case Level1 level1:
+                            currentLevel = new Level2();
+                            System.out.println("Bienvenido al Nivel 2.");
+                            break;
+                        case Level2 level2:
+                            currentLevel = new Level3();
+                            System.out.println("Bienvenido al Nivel 3.");
+                            break;
+                        case Level3 level3:
+                            currentLevel = new Level4();
+                            System.out.println("Bienvenido al Nivel 4.");
+                            break;
+                        case Level4 level4:
+                            currentLevel = new Level5();
+                            System.out.println("Bienvenido al Nivel 5.");
+                            break;
+                        default:
+                            System.out.printf("¡¡¡FELICITACIONES ♣♣♣ %s ♣♣♣ HAS COMPLETADO TODOS LOS NIVELES.!!!\n", player.getName());
+                            System.out.printf("TOTAL PUNTOS: ♠♠♠ %d ♠♠♠\n", player.getPoints());
+                            BestPlayer.showBestPlayer();
+                            break label;
                     }
                 }
             }
