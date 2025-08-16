@@ -4,20 +4,43 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class Levels {
+/**
+ * An abstract class that serves as a base for defining game levels.
+ * <p>
+ * This class contains the core logic for generating mathematical questions,
+ * calculating answers, and creating answer options, allowing subclasses (like
+ * {@link Level1}) to configure specific parameters.
+ */
+public abstract class Levels {
 
-    // Attributes, the protected for inheritance is accessible
+    /** The first number in the operation. */
     public int firstNumber;
+    /** The second number in the operation. */
     public int secondNumber;
+    /** The maximum range for the numbers in the operation. */
     public int rangeMaximum;
+    /** The array of available mathematical operations for the level. */
     public String[] operationsAvailable;
+    /** The correct answer to the operation. */
     protected int answer;
+    /** The selected mathematical operation. */
     protected String operation;
+    /** The array of answer options, which includes the correct one. */
     protected int[] optionAnswer;
+    /** The maximum score that can be obtained for a correct answer. */
     protected int pointsMaximum;
+    /** The minimum score that can be obtained for a correct answer. */
     protected int pointsMinimum;
 
-    // Method for generating a mathematical question
+    /**
+     * Generates a new random mathematical question and its answer options.
+     * <p>
+     *     It ensures that the numbers and operations are valid for the level's rules,
+     *     and handles special cases such as division and subtraction.
+     * </p>
+     * @throws IllegalArgumentException if the {@code rangeMaximum} is less than or equal to zero.
+     * @throws UnsupportedOperationException if the generated operation is not supported.
+     */
     public void createQuestion(){
         if (this.rangeMaximum <= 0){
             // Throw an exception to handle invalid range input
@@ -61,7 +84,13 @@ public class Levels {
             this.createOptions(this.answer);
         }
     }
-    // Generate response options, including the correct with several false
+
+    /**
+     * Generates an array of three answer options, including the correct one and two incorrect ones.
+     * The incorrect options are randomly generated non-duplicate numbers.
+     * The final options array is shuffled so the correct answer is not always in the same position.
+     * @param answerCorrect The correct answer for the question.
+     */
     public void createOptions(int answerCorrect){
         Random randomOption = new Random();
         this.optionAnswer = new int[3]; // Arrangement of 3 spaces
@@ -95,11 +124,38 @@ public class Levels {
             this.optionAnswer[randomIndex] = numTemporary; // Change response position
         }
     }
-    // Getters
+
+    /**
+     * Gets the mathematical question as a string.
+     * @return The formatted question (e.g., "5 + 3 = ?").
+     */
     public String getOperation(){return String.format( "%d %s %d = ?\n", this.firstNumber, this.operation, this.secondNumber);}
+    /**
+     * Gets the generated answer options for the current question.
+     * @return An array of integers with the answer options.
+     */
     public int[] getOptionAnswer(){return this.optionAnswer;}
+    /**
+     * Gets the correct answer to the current question.
+     * @return The correct answer.
+     */
     public int getAnswer(){return this.answer;}
+    /**
+     * Gets the maximum number of points that can be earned in this level.
+     * @return The maximum points.
+     */
     public int getPointsMaximum(){return this.pointsMaximum;}
+    /**
+     * Gets the minimum number of points that can be earned in this level.
+     * @return The minimum points.
+     */
     public int getPointsMinimum(){return this.pointsMinimum;}
+
+    /**
+     * Indicates whether there are more questions available in this level.
+     * This method can be overridden in subclasses if the game has a limited
+     * number of questions per level.
+     * @return Always {@code false} by default, indicating that the level has no question limit.
+     */
     public boolean hasMoreQuestions(){return false;}
 }
