@@ -1,22 +1,104 @@
+# Maven / Build
 target/
+**/target/
+dependency-reduced-pom.xml
+release.properties
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+
+# Maven Wrapper
 .mvn/wrapper/maven-wrapper.jar
-**/src/main/**/target/
-**/src/test/**/target/
+.mvn/wrapper/maven-wrapper.properties
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# Java binaries / archives
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Logs and crash reports
+*.log
+logs/
+hs_err_pid*
+*.stacktrace
+
+# IntelliJ IDEA
+.idea/
 *.iml
+*.iws
 *.ipr
+out/
 
-### VS Code ###
+# VS Code
 .vscode/
 
-### Mac OS ###
-.DS_Store
+# Eclipse
+.settings/
+.project
+.classpath
+.factorypath
 
-# Linux
+# Generated / build artifacts
+generated/
+generated-sources/
+generated-resources/
+build/
+out/
+
+# Test reports / coverage
+target/surefire-reports/
+target/failsafe-reports/
+test-output/
+coverage/
+jacoco.exec
+target/site/jacoco/
+*.lcov
+
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Editor temporary files
 *~
+*.swp
+*.swo
+*.tmp
+
+# Environment / secrets / keys
+.env
+.env.local
+*.env
+credentials.properties
+secrets.*
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+*.crt
+
+# Docker / Compose local overrides
+docker-compose.override.yml
+
+# Node (if the project includes front-end)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Misc
+*.iml
+*.class
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/shelf/
